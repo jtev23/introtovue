@@ -1,36 +1,24 @@
-import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.esm.browser.js';
+// todo => use a key to track the current video, or just pass the video in as a ref to the function and grab its source
 
-const myvm = (() => {
-    // can put whatever here... this is inside the closure
+var vm = new Vue({
+  el: "#app",
 
-    let vue_VM = new Vue({
-        data: {
-            message: "Hello from Vue!",
+  data: {
 
-            collection: [
-                { name: "Trevor", role: "prof" },
-                { name: "Justin", role: "coordinator" },
-                { name: "Joe", role: "prof" }
-            ],
+    // mock up the user - this well eventually come from the database UMS (user management system)
 
-            isVisible: false,
 
-            hasError: true
+    // this data would also come from the database, but we'll just mock it up for now
+    videodata: [
+      { name: "Star Wars The Force Awakens", thumb: "forceawakens.jpg", vidsource: "forceawakens.mp4", description: "yet another star wars movie" },
+      { name: "Stranger Things", thumb: "strangerthings.jpg", vidsource: "strangerthings.mp4", description: "don't get lost in the upside down" },
+      { name: "Marvel's The Avengers", thumb: "avengers.jpg", vidsource: "avengers.mp4", description: "will they make black widow action figures this time?" }
+    ],
 
-        },
+    showDetails: false
+  },
 
-        created: function () {
-            this.logLoaded();
-        },
+  methods: {
 
-        methods: {
-            logLoaded() {
-                console.log('loaded')
-            },
-
-            alertName(name) {
-                console.log(name)
-            }
-        }
-    }).$mount("#app");
-})();
+  }
+});

@@ -8,7 +8,7 @@ var vm = new Vue({
     user: {
       isAdmin: true,
       isLoggedIn: true,
-      avatar: 'thor.png'
+      avatar: null //'thor.png'
     },
 
     // this data would also come from the database, but we'll just mock it up for now
@@ -17,6 +17,10 @@ var vm = new Vue({
       { name: "Stranger Things", thumb: "strangerthings.jpg", vidsource: "strangerthings.mp4", description: "don't get lost in the upside down" },
       { name: "Marvel's The Avengers", thumb: "avengers.jpg", vidsource: "avengers.mp4", description: "will they make black widow action figures this time?" }
     ],
+
+    videotitle: "video title goes here",
+    videodescription: "vid description goes here",
+    videosource: "",
 
     showDetails: false
   },
@@ -32,6 +36,17 @@ var vm = new Vue({
     },
     setUserPrefs() {
       console.log('set up prefs via routing and probably a component');
+    },
+    //this is ES6 Data destructuring = pull keys and values you need, not the whole object
+    loadMovie({name, description, vidsource}){
+      console.log('show movie details');
+
+      this.videotitle= name;
+      this.videodescription = description;
+      this.videosource = vidsource;
+
+      this.showDetails = true;
+
     }
   }
 });

@@ -4,9 +4,12 @@ var vm = new Vue({
   el: "#app",
 
   data: {
-
-    // mock up the user - this well eventually come from the database UMS (user management system)
-
+// mock up the user - this well eventually come from the database UMS (user management system)
+    user: {
+      isAdmin: true,
+      isLoggedIn: true,
+      avatar: 'thor.png'
+    },
 
     // this data would also come from the database, but we'll just mock it up for now
     videodata: [
@@ -19,6 +22,16 @@ var vm = new Vue({
   },
 
   methods: {
-
+    logInOut() {
+      // test the login / logout_> button should change color, eventually we'll use routihng component
+      console.log('do login / logout on click');
+      // ? = if else statement
+      //evaluate the expression; if its true, use the value to the left of the colon, 
+      // if false use value to the right of the colon
+      this.user.isLoggedIn  = (this.user.isLoggedIn) ? false : true;
+    },
+    setUserPrefs() {
+      console.log('set up prefs via routing and probably a component');
+    }
   }
 });

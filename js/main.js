@@ -6,9 +6,9 @@ var vm = new Vue({
   data: {
 // mock up the user - this well eventually come from the database UMS (user management system)
     user: {
-      isAdmin: true,
-      isLoggedIn: true,
-      avatar: null //'thor.png'
+      //isadmin: true,
+      //isloggedin: true,
+      //avatar: null //'thor.png'
     },
 
     // this data would also come from the database, but we'll just mock it up for now
@@ -23,6 +23,11 @@ var vm = new Vue({
     videosource: "",
 
     showDetails: false
+  },
+
+  created: function() {
+    // vue instance is ready to go, mostly - add some live data to the vm
+    this.fetchUsers();
   },
 
   methods: {
@@ -47,6 +52,22 @@ var vm = new Vue({
 
       this.showDetails = true;
 
+    },
+    fetchUsers(){
+      console.log('fetch use data here');
+
+      const url = './includes/index.php?user=true';
+      
+      fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+
+        //push our user data
+        this.user = data[0];
+
+      })
+      .catch((err) => console.log(err))
     }
   }
 });
